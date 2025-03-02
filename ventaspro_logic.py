@@ -60,7 +60,7 @@ def calcular_ganancia(cantidad, precio_venta, precio_compra, moneda_venta, moned
 
 # Función principal
 def principal(page: ft.Page):
-    page.title = "VentasProYeni"
+    page.title = "VentasProYen1"
     page.window.icon = "logo.png"
     page.window.width = 600
     page.window.height = 700
@@ -447,7 +447,7 @@ def principal(page: ft.Page):
                                   bgcolor=ft.Colors.PURPLE_300, color=ft.Colors.WHITE),
                 ft.ElevatedButton("Divisa y Notas", width=200, on_click=ir_a_vendedores,
                                   bgcolor=ft.Colors.PURPLE_300, color=ft.Colors.WHITE),
-                ft.ElevatedButton("Acerca de", width=200, on_click=ir_a_otra_funcion, bgcolor=ft.Colors.PURPLE_300,
+                ft.ElevatedButton("Acerca de yeni", width=200, on_click=ir_a_otra_funcion, bgcolor=ft.Colors.PURPLE_300,
                                   color=ft.Colors.WHITE)
             ],
             spacing=10,
