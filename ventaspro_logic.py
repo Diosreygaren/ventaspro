@@ -60,7 +60,7 @@ def calcular_ganancia(cantidad, precio_venta, precio_compra, moneda_venta, moned
 
 # Función principal
 def principal(page: ft.Page):
-    page.title = "VentasProYeniamor"
+    page.title = "VentasProV1"
     page.window.icon = "logo.png"
     page.window.width = 600
     page.window.height = 700
