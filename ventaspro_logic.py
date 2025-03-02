@@ -447,7 +447,7 @@ def principal(page: ft.Page):
                                   bgcolor=ft.Colors.PURPLE_300, color=ft.Colors.WHITE),
                 ft.ElevatedButton("Divisa y Notas", width=200, on_click=ir_a_vendedores,
                                   bgcolor=ft.Colors.PURPLE_300, color=ft.Colors.WHITE),
-                ft.ElevatedButton("Acerca de yeni", width=200, on_click=ir_a_otra_funcion, bgcolor=ft.Colors.PURPLE_300,
+                ft.ElevatedButton("Acerca de v1", width=200, on_click=ir_a_otra_funcion, bgcolor=ft.Colors.PURPLE_300,
                                   color=ft.Colors.WHITE)
             ],
             spacing=10,
