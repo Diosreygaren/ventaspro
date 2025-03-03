@@ -349,64 +349,65 @@ def principal(page: ft.Page):
             return ft.Column(controls, spacing=5)
 
         def borrar_todas_ventas(e):
-    def verificar_contraseña(e):
-        try:
-            password_entered = float(entrada_contraseña.value)
-            if password_entered == exchange_rate[0]:
-                ventas_registradas.clear()
-                guardar_ventas(ventas_registradas)
-                page.snack_bar = ft.SnackBar(
-                    ft.Text("Todas las ventas han sido eliminadas exitosamente."),
-                    bgcolor=ft.Colors.GREEN
-                )
-                page.snack_bar.open = True
-                page.go("/productos")  # Refresca la vista
-            else:
-                page.snack_bar = ft.SnackBar(
-                    ft.Text("Contraseña incorrecta. Intente de nuevo."),
-                    bgcolor=ft.Colors.RED
-                )
-                page.snack_bar.open = True
-            page.dialog.open = False
-            page.update()
-        except ValueError:
-            page.snack_bar = ft.SnackBar(
-                ft.Text("Ingrese un número válido como contraseña."),
-                bgcolor=ft.Colors.RED
+            
+            def verificar_contraseña(e):
+                try:
+                    password_entered = float(entrada_contraseña.value)
+                    if password_entered == exchange_rate[0]:
+                        ventas_registradas.clear()
+                        guardar_ventas(ventas_registradas)
+                        page.snack_bar = ft.SnackBar(
+                            ft.Text("Todas las ventas han sido eliminadas exitosamente."),
+                            bgcolor=ft.Colors.GREEN
+                        )
+                        page.snack_bar.open = True
+                        page.go("/productos")  # Refresca la vista
+                    else:
+                        page.snack_bar = ft.SnackBar(
+                            ft.Text("Contraseña incorrecta. Intente de nuevo."),
+                            bgcolor=ft.Colors.RED
+                        )
+                        page.snack_bar.open = True
+                    page.dialog.open = False
+                    page.update()
+                except ValueError:
+                    page.snack_bar = ft.SnackBar(
+                        ft.Text("Ingrese un número válido como contraseña."),
+                        bgcolor=ft.Colors.RED
+                    )
+                    page.snack_bar.open = True
+                    page.update()
+        
+            # Crear un diálogo para ingresar la contraseña
+            entrada_contraseña = ft.TextField(
+                label="Ingrese el cambio de divisa como contraseña",
+                password=True,
+                width=300
             )
-            page.snack_bar.open = True
-            page.update()
-
-    # Crear un diálogo para ingresar la contraseña
-    entrada_contraseña = ft.TextField(
-        label="Ingrese el cambio de divisa como contraseña",
-        password=True,
-        width=300
-    )
-    dialogo = ft.AlertDialog(
-        title=ft.Text("Confirmar eliminación de todas las ventas", weight=ft.FontWeight.BOLD),
-        content=ft.Column([
-            ft.Text("Por seguridad, ingrese el valor actual del cambio de divisa (ejemplo: 60):"),
-            entrada_contraseña
-        ], spacing=10),
-        actions=[
-            ft.ElevatedButton(
-                "Confirmar",
-                on_click=verificar_contraseña,
-                bgcolor=ft.Colors.PURPLE_300,
-                color=ft.Colors.WHITE
-            ),
-            ft.ElevatedButton(
-                "Cancelar",
-                on_click=lambda e: setattr(page.dialog, 'open', False) or page.update(),
-                bgcolor=ft.Colors.GREY_400,
-                color=ft.Colors.WHITE
+            dialogo = ft.AlertDialog(
+                title=ft.Text("Confirmar eliminación de todas las ventas", weight=ft.FontWeight.BOLD),
+                content=ft.Column([
+                    ft.Text("Por seguridad, ingrese el valor actual del cambio de divisa (ejemplo: 60):"),
+                    entrada_contraseña
+                ], spacing=10),
+                actions=[
+                    ft.ElevatedButton(
+                        "Confirmar",
+                        on_click=verificar_contraseña,
+                        bgcolor=ft.Colors.PURPLE_300,
+                        color=ft.Colors.WHITE
+                    ),
+                    ft.ElevatedButton(
+                        "Cancelar",
+                        on_click=lambda e: setattr(page.dialog, 'open', False) or page.update(),
+                        bgcolor=ft.Colors.GREY_400,
+                        color=ft.Colors.WHITE
+                    )
+                ]
             )
-        ]
-    )
-    page.dialog = dialogo
-    dialogo.open = True
-    page.update()
+            page.dialog = dialogo
+            dialogo.open = True
+            page.update()
     
         ventas_por_vendedor = {}
         for indice, venta in enumerate(ventas_registradas):
